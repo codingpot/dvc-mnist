@@ -2,8 +2,12 @@ import tensorflow as tf
 import tensorflow.keras.layers as layers
 
 """
-This ClassificationModel's origin is https://keras.io/examples/vision/image_classification_from_scratch/
+This ClassificationModel origin is origin is keras code example. 
+Author: fchollet
+Link : https://keras.io/examples/vision/image_classification_from_scratch/
+Refactoring : Eden Park
 """
+
 class ClassificationModel:
 	def __init__(self, image_size, num_classes):
 		self.input_shape = image_size + (3,)
@@ -19,7 +23,7 @@ class ClassificationModel:
 			)
 			return data_augmentation(inputs)
 
-		inputs = tf.keras.Input(self.input_shape)
+		inputs = tf.keras.Input(shape=self.input_shape)
 
 		x = data_augmentation(inputs)
 		x = layers.experimental.preprocessing.Rescaling(1.0 / 255)(x)
